@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController
+class Api::V1::MessagesController < ApplicationController
   def index
     room = Room.find(params[:room_id])
     render json:room.messages
