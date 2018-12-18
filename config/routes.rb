@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         resources :messages
       end
       resources :messages
-      resources :users
+      resources :users, only: [:create]
       resources :user_rooms
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
