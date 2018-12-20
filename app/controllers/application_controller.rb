@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
     JWT.encode(payload, 'secret')
   end
 
-  def decoded_token(token)
+  def decoded_token
       if auth_header
           token = auth_header.split(' ')[1] #byebug this later pls
         begin
