@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_17_153152) do
+ActiveRecord::Schema.define(version: 2018_12_22_195530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 2018_12_17_153152) do
     t.string "bio", default: "Hello, i'm a new ViewingParty Member who needs to edit their bio!"
     t.string "avatar"
     t.string "username"
+  end
+
+  create_table "youtubes", force: :cascade do |t|
+    t.string "video_url"
+    t.integer "current_time"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.boolean "current_video"
+    t.boolean "paused"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

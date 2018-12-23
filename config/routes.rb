@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :rooms do
         resources :messages
+        resources :youtubes
       end
       resources :messages
       resources :users, only: [:create]
