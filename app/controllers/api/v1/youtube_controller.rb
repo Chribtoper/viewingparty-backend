@@ -17,6 +17,6 @@ class Api::V1::YoutubeController < ApplicationController
 
   private
   def youtube_params
-    params.permit(:room_id, :video_url)
+    params.permit(:room_id, :video_url, :current_time)
   end
 end
