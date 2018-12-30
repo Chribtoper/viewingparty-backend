@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :rooms do
         resources :messages
         resources :youtubes
+        resources :users
       end
       resources :messages
       resources :users, only: [:create]
