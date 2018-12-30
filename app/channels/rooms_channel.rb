@@ -5,6 +5,7 @@ class RoomsChannel < ApplicationCable::Channel
 
   def receive(data)
     ActionCable.server.broadcast "room_#{params[:room_id]}", data
+    byebug
   end
 
   def unsubscribed
