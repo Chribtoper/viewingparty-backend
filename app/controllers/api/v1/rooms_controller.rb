@@ -11,7 +11,7 @@ class Api::V1::RoomsController < ApplicationController
 
   def create
     room = Room.create(room_params)
-    ActionCable.server.broadcast "room_#{room.id}", { title: 'New room', body: room }
+    # ActionCable.server.broadcast "room_#{room.id}", { title: 'New room', body: room }
     render json: room, status: 201
   end
 

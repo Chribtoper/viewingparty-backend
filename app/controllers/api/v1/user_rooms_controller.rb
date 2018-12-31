@@ -11,7 +11,7 @@ class Api::V1::UserRoomsController < ApplicationController
 
   def create
     user_room = UserRoom.create(user_room_params)
-    ActionCable.server.broadcast "user_room_#{user_room.room_id}", { title: 'New user room', body: user_room }
+    ActionCable.server.broadcast "room_#{user_room.room_id}", { title: 'User joined', body: user_room }
     render json: user_room, status: 201
   end
 
@@ -22,6 +22,6 @@ class Api::V1::UserRoomsController < ApplicationController
 
   private
   def user_room_params
-    params.require(:user_room).permit(:id, :user_id, :room_id)
+    params.require(:user_room).permit(:user_id, :room_id)
   end
 end
