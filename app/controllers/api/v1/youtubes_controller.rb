@@ -1,4 +1,4 @@
-class Api::V1::YoutubeController < ApplicationController
+class Api::V1::YoutubesController < ApplicationController
   def index
     room = Room.find(params[:room_id])
     render json:room.youtubes
@@ -11,12 +11,13 @@ class Api::V1::YoutubeController < ApplicationController
 
   def create
     youtube = Youtube.create(youtube_params)
-    ActionCable.server.broadcast "room_#{youtube.room_id}", { title: 'New youtube video', body: youtube }
+    the_user = User.find(youtube.user_id)
+    ActionCable.server.broadcast "room_#{youtube.room_id}", { title: 'new_youtube_vid', body: { youtube: youtube, user: the_user} }
     render json: youtube, status: 201
   end
 
   private
   def youtube_params
-    params.permit(:room_id, :video_url, :current_time)
+    params.require(:youtube).permit(:room_id, :video_url, :user_id)
   end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         resources :youtubes
         resources :users
       end
+      resources :youtubes
       resources :user_rooms
       resources :messages
       resources :users, only: [:create]
