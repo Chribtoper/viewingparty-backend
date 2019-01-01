@@ -7,7 +7,7 @@ class RoomsChannel < ApplicationCable::Channel
     room = Room.find(room_id)
     user_room = UserRoom.create(user_id: user_id, room_id: room_id)
     ActionCable.server.broadcast "room_#{user_room.room_id}", { title: 'User joined', body: User.find(user_room.user_id) }
-    ActionCable.server.broadcast "room_#{room_id}", { title: 'All users', body: room.users }
+    ActionCable.server.broadcast "room_#{room_id}", { title: 'All users', body: { users: room.users, videos: room.youtubes, messages: room.messages } }
 
   end
 
@@ -21,7 +21,7 @@ class RoomsChannel < ApplicationCable::Channel
     room = Room.find(room_id)
     delete_room = UserRoom.find_by(user_id: user_id, room_id: room_id)
     UserRoom.delete(delete_room)
-    ActionCable.server.broadcast "room_#{room_id}", { title: 'All users', body: room.users }
+    # ActionCable.server.broadcast "room_#{room_id}", { title: 'All users', body: room.users }
     ActionCable.server.broadcast "room_#{room_id}", { title: 'host_change', body: room.users }
   end
 
