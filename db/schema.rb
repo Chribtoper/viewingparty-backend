@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_29_022439) do
+ActiveRecord::Schema.define(version: 2019_01_02_052638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2018_12_29_022439) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url", default: "https://cdn0.iconfinder.com/data/icons/seo-smart-pack/128/grey_new_seo2-36-512.png"
   end
 
   create_table "user_rooms", force: :cascade do |t|
