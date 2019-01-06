@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_220921) do
+ActiveRecord::Schema.define(version: 2019_01_02_052638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,15 @@ ActiveRecord::Schema.define(version: 2018_12_10_220921) do
     t.integer "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "userName"
+    t.string "icon"
   end
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "url", default: "https://cdn0.iconfinder.com/data/icons/seo-smart-pack/128/grey_new_seo2-36-512.png"
   end
 
   create_table "user_rooms", force: :cascade do |t|
@@ -38,6 +41,21 @@ ActiveRecord::Schema.define(version: 2018_12_10_220921) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "bio", default: "Hello, i'm a new ViewingParty Member who needs to edit their bio!"
+    t.string "avatar"
+    t.string "username"
+  end
+
+  create_table "youtubes", force: :cascade do |t|
+    t.string "video_url"
+    t.integer "current_time"
+    t.integer "user_id"
+    t.integer "room_id"
+    t.boolean "current_video"
+    t.boolean "paused"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

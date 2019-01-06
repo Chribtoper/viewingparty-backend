@@ -1,6 +1,6 @@
-class RoomsController < ApplicationController
+class Api::V1::RoomsController < ApplicationController
   def index
-    rooms = Room.all
+    rooms = Room.all.sort
     render json:rooms
   end
 
@@ -11,13 +11,16 @@ class RoomsController < ApplicationController
 
   def create
     room = Room.create(room_params)
-    ActionCable.server.broadcast "room_#{room.id}", { title: 'New room', body: room }
     render json: room, status: 201
   end
 
+  def update
+    room = Room.find(params[:id])
+    room.update(room_params)
+  end
   private
 
   def room_params
-    params.permit(:name)
+    params.require(:room).permit(:name, :url)
   end
 end
