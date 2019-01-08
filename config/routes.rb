@@ -14,7 +14,8 @@ Rails.application.routes.draw do
       resources :user_rooms
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
-      mount ActionCable.server => '/cable'
+      # mount ActionCable.server => '/cable'
     end
   end
+  mount ActionCable.server => '/cable'
 end
