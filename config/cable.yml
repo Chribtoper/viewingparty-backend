@@ -1,8 +1,8 @@
 production: &production
-  :url: <%= ENV["REDISTOGO_URL"] %>
+  :url: <%= ENV["REDIS_PROVIDER"] %>
   :timeout: 1
 development: &development
-  :url: <%= ENV["REDISTOGO_URL"] %>
+  :url: <%= ENV["REDIS_PROVIDER"] %>
   :timeout: 1
   :inline: true
 test: *development
