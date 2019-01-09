@@ -37,6 +37,7 @@ Rails.application.configure do
   config.action_cable.url = "wss://#{ENV['RAILS_HOST']}/cable"
   config.web_socket_server_url = "wss://#{ENV['RAILS_HOST']}/cable"
   config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
+  $redis = if Rails.env.production? ? Redis.new(ENV["REDIS_URL"]) : Redis.new("redis://localhost:6379")
   # config.action_cable.allowed_request_origins = ["https://viewingparty-app.herokuapp.com/", /https:\/\/viewingparty-app.herokuapp.*/]
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
