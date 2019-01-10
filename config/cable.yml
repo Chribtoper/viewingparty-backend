@@ -1,5 +1,6 @@
 production: &production
   :url: <%= ENV["REDIS_URL"] %>
+  :password: <%= ENV["REDIS_PASSWORD"] %>
   :timeout: 1
 development: &development
   :url: <%= ENV["REDIS_URL"] %>
